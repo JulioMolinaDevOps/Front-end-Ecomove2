@@ -1,0 +1,21 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    allowedHosts: ['bright-moose-slide.loca.lt','itchy-books-refuse.loca.lt'],
+    proxy: {
+      '/api': {
+        //target: 'https://ecomove-v1.onrender.com',
+        target: 'http://localhost:8080',
+        //target:'https://ecomove.onrender.com',
+        //target: 'https://ecomovesolid.onrender.com',
+        changeOrigin: true,
+        secure: false,
+      }
+    }
+  }
+})
